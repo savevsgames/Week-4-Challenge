@@ -36,7 +36,8 @@ function renderBlogList(userdata) {
 // TODO: Call the `renderBlogList` function
 const userData = currentUser() ?? [];
 renderBlogList(userData);
+
 // TODO: Redirect to the home page using the `redirectPage` function found in logic.js when the back button is clicked
-backButton.addEventListener("click", () => {
+backButton.addEventListener("click", function () {
   redirectPage("index.html");
 });
