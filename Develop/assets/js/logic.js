@@ -3,19 +3,49 @@ let toggleId = document.querySelector("#toggle");
 
 function toggleTheme() {
   let currentTheme = "light";
+
   if (localStorage.getItem("theme") !== undefined) {
     currentTheme = localStorage.getItem("theme");
-    console.log("The current theme is: ", currentTheme);
-  } else {
-    console.log("The current theme is: ", currentTheme);
-  }
+    // console.log("The current theme is: ", currentTheme);
 
-  if (currentTheme === "light") {
-    currentTheme = "dark";
-    localStorage.setItem("theme", "dark");
+    if (currentTheme === "light") {
+      // remove light class
+      const themeElems = document.querySelectorAll(`.${currentTheme}`);
+      for (let i = 0; i < themeElems.length; i++) {
+        // console.log("Theme Element ->", themeElems[i]);
+        themeElems[i].classList.remove(`${currentTheme}`);
+      }
+      // set theme to dark, save it locally, and add dark class to elements
+      currentTheme = "dark";
+      localStorage.setItem("theme", "dark");
+      // swap icon
+      toggleId.setAttribute("src", "./assets/icons/moon-icon.svg");
+
+      for (let i = 0; i < themeElems.length; i++) {
+        // console.log("Theme Element ->", themeElems[i]);
+        themeElems[i].classList.add(`${currentTheme}`);
+      }
+    } else {
+      // current theme has returned as dark, remove dark, add light to all elems.
+
+      const themeElems = document.querySelectorAll(`.${currentTheme}`);
+      for (let i = 0; i < themeElems.length; i++) {
+        // console.log("Theme Element ->", themeElems[i]);
+        themeElems[i].classList.remove(`${currentTheme}`);
+      }
+      // set and save to local storage
+      currentTheme = "light";
+      localStorage.setItem("theme", "light");
+      // swap icon
+      toggleId.setAttribute("src", "./assets/icons/sun-icon.svg");
+
+      for (let i = 0; i < themeElems.length; i++) {
+        // console.log("Theme Element ->", themeElems[i]);
+        themeElems[i].classList.add(`${currentTheme}`);
+      }
+    }
   } else {
-    currentTheme = "light";
-    localStorage.setItem("theme", "light");
+    console.log("The current theme is undefined: ", currentTheme); // undefined
   }
 }
 
