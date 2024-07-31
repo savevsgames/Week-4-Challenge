@@ -1,7 +1,21 @@
 /*
   Blog Styles
 */
+nav {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: rows;
+  align-items: center;
+  width: 100%;
+}
 
+nav div {
+  display: flex;
+  flex-direction: rows;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
 /*
   Tags
 */
