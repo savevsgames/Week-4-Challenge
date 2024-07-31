@@ -1,5 +1,5 @@
 // TODO: Create a variable that selects the main element, and a variable that selects the back button element
-const mainBlogArea = document.querySelector("main");
+const mainElement = document.getElementsByTagName("main")[0];
 const backButton = document.getElementById("back");
 // TODO: Create a function that builds an element and appends it to the DOM
 function buildAppend(post) {
@@ -8,7 +8,7 @@ function buildAppend(post) {
                         <blockquote>${post.content}</blockquote>
                         <p>${post.username}</p>`;
   element.classList.add(".card");
-  mainBlogArea.appendChild(element);
+  mainElement.appendChild(element);
 }
 // TODO: Create a function that handles the case where there are no blog posts to display
 // ie. function to see if user exists already and if they do, set them as the "currentUser", if not, display message.
@@ -24,7 +24,7 @@ function currentUser() {
     const element = document.createElement("article");
     element.innerHTML = `<h2>No Blog posts yet...</h2>`;
     element.classList.add("card");
-    mainBlogArea.appendChild(element);
+    mainElement.appendChild(element);
   }
 }
 // TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.

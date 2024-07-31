@@ -18,9 +18,9 @@ function createPost(event) {
   ) {
     // set the elements
     const post = {
-      username: usernameInput.value,
-      title: titleInput.value,
-      content: contentInput.value,
+      username: usernameInput.value.trim(),
+      title: titleInput.value.trim(),
+      content: contentInput.value.trim(),
     };
 
     console.log(post.username);

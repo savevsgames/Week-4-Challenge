@@ -35,7 +35,7 @@
       <!-- A form element that contains the following: -->
       <section>
         <h2>What's on your mind?</h2>
-        <form action="" method="POST">
+        <form action="/submit-post" method="POST">
           <!-- An input element whose label and id are `username` -->
 
           <label for="username">Username:</label>
@@ -48,7 +48,7 @@
 
           <!-- An input element whose label and id are `title` -->
 
-          <label for="title">Post Title:</label>
+          <label for="title">Title:</label>
           <input
             type="text"
             name="title"
@@ -59,12 +59,12 @@
           <!-- A textarea element whose label and id are `content` -->
 
           <label for="content">Content:</label>
-          <input
+          <textarea
             type="textarea"
             name="content"
             id="content"
             placeholder="Write your message ..."
-          />
+          ></textarea>
 
           <input type="submit" id="submit" value="SUBMIT" />
           <!-- A p element whose id is `error` -->

@@ -1,53 +1,122 @@
 // TODO: Create logic to toggle the light/dark mode styles for the page and circle. The mode should be saved to local storage.
 let toggleId = document.querySelector("#toggle");
+const currentThemeElem =
+  document.querySelector(".light") || document.querySelector(".dark");
+// get the theme to load
+var currentTheme = currentThemeElem.getAttribute("class");
+var savedTheme = getThemeFromStorage();
+
+console.log("Page load current theme grabbed ->", currentTheme);
+
+if (localStorage.getItem("theme") !== undefined) {
+  loadSavedTheme();
+}
+
+function getThemeFromStorage() {
+  currentTheme = localStorage.getItem("theme");
+  console.log("Theme grabbed from storage - >", currentTheme);
+  return currentTheme;
+}
 
 function toggleTheme() {
-  let currentTheme = "light";
+  if (currentTheme === "light") {
+    const themeElems = document.querySelectorAll(`.${currentTheme}`);
+    for (let i = 0; i < themeElems.length; i++) {
+      // console.log("Theme Element ->", themeElems[i]);
+      themeElems[i].classList.remove(`${currentTheme}`);
+    }
 
-  if (localStorage.getItem("theme") !== undefined) {
-    currentTheme = localStorage.getItem("theme");
-    // console.log("The current theme is: ", currentTheme);
+    // set theme to dark, save it locally, and add dark class to elements
+    currentTheme = "dark";
+    localStorage.setItem("theme", "dark");
+    console.log("The theme was toggled, now it is: ", currentTheme);
+    // swap icon
+    toggleId.setAttribute("src", "./assets/icons/moon-icon.svg");
+    // change circle color
+    document.documentElement.style.setProperty("--circle-color", "#4a1b80");
 
-    if (currentTheme === "light") {
-      // remove light class
-      const themeElems = document.querySelectorAll(`.${currentTheme}`);
-      for (let i = 0; i < themeElems.length; i++) {
-        // console.log("Theme Element ->", themeElems[i]);
-        themeElems[i].classList.remove(`${currentTheme}`);
-      }
-      // set theme to dark, save it locally, and add dark class to elements
-      currentTheme = "dark";
-      localStorage.setItem("theme", "dark");
-      // swap icon
-      toggleId.setAttribute("src", "./assets/icons/moon-icon.svg");
-
-      for (let i = 0; i < themeElems.length; i++) {
-        // console.log("Theme Element ->", themeElems[i]);
-        themeElems[i].classList.add(`${currentTheme}`);
-      }
-    } else {
-      // current theme has returned as dark, remove dark, add light to all elems.
-
-      const themeElems = document.querySelectorAll(`.${currentTheme}`);
-      for (let i = 0; i < themeElems.length; i++) {
-        // console.log("Theme Element ->", themeElems[i]);
-        themeElems[i].classList.remove(`${currentTheme}`);
-      }
-      // set and save to local storage
-      currentTheme = "light";
-      localStorage.setItem("theme", "light");
-      // swap icon
-      toggleId.setAttribute("src", "./assets/icons/sun-icon.svg");
-
-      for (let i = 0; i < themeElems.length; i++) {
-        // console.log("Theme Element ->", themeElems[i]);
-        themeElems[i].classList.add(`${currentTheme}`);
-      }
+    for (let i = 0; i < themeElems.length; i++) {
+      // console.log("Theme Element ->", themeElems[i]);
+      themeElems[i].classList.add(`${currentTheme}`);
     }
   } else {
-    console.log("The current theme is undefined: ", currentTheme); // undefined
+    // theme was dark
+    const themeElems = document.querySelectorAll(`.${currentTheme}`);
+    for (let i = 0; i < themeElems.length; i++) {
+      // console.log("Theme Element ->", themeElems[i]);
+      themeElems[i].classList.remove(`${currentTheme}`);
+    }
+
+    // set theme to dark, save it locally, and add dark class to elements
+    currentTheme = "light";
+    localStorage.setItem("theme", "light");
+    console.log("The theme was toggled, now it is: ", currentTheme);
+    // swap icon
+    toggleId.setAttribute("src", "./assets/icons/sun-icon.svg");
+    // change circle color
+    document.documentElement.style.setProperty("--circle-color", "#ffb100");
+
+    for (let i = 0; i < themeElems.length; i++) {
+      // console.log("Theme Element ->", themeElems[i]);
+      themeElems[i].classList.add(`${currentTheme}`);
+    }
   }
 }
+
+function loadSavedTheme() {
+  savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    const themeElems = document.querySelectorAll(".dark");
+
+    for (let i = 0; i < themeElems.length; i++) {
+      // console.log("Theme Element ->", themeElems[i]);
+      themeElems[i].classList.remove("dark");
+    }
+
+    currentTheme = "light";
+    localStorage.setItem("theme", "light");
+    console.log("The theme is: ", savedTheme);
+    // swap icon
+    toggleId.setAttribute("src", "./assets/icons/sun-icon.svg");
+    // change circle color
+    document.documentElement.style.setProperty("--circle-color", "#ffb100");
+
+    for (let i = 0; i < themeElems.length; i++) {
+      // console.log("Theme Element ->", themeElems[i]);
+      themeElems[i].classList.add(`${currentTheme}`);
+    }
+  } else {
+    // theme was dark
+
+    const themeElems = document.querySelectorAll(".light");
+    console.log("Theme Elements->", themeElems);
+    for (let i = 0; i < themeElems.length; i++) {
+      // console.log("Theme Element ->", themeElems[i]);
+      themeElems[i].classList.remove("light");
+    }
+    console.log("Theme Elements->", themeElems);
+    // set theme to dark, save it locally, and add dark class to elements
+    currentTheme = "dark";
+    localStorage.setItem("theme", "dark");
+    console.log("The theme is: ", savedTheme, currentTheme);
+    // swap icon
+    toggleId.setAttribute("src", "./assets/icons/moon-icon.svg");
+    // change circle color
+    document.documentElement.style.setProperty("--circle-color", "#4a1b80");
+
+    for (let i = 0; i < themeElems.length; i++) {
+      // console.log("Theme Element ->", themeElems[i]);
+      themeElems[i].classList.add(`${savedTheme}`);
+    }
+  }
+}
+
+let redirectURL = "";
+
+const redirectPage = function (url) {
+  redirectURL = url;
+  location.assign(url);
+};
 
 toggleId.addEventListener("click", toggleTheme);
 
@@ -81,10 +150,3 @@ function storeLocalStorage(username, data) {
 }
 
 // ! Use the following function whenever you need to redirect to a different page
-
-let redirectURL = "";
-
-const redirectPage = function (url) {
-  redirectURL = url;
-  location.assign(url);
-};
