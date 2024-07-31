@@ -2,7 +2,7 @@
 
 ## UPDATE
 
-[HTML - CURRENT PROJECT STATE](https://savevsgames.github.io/Week-4-Challenge/index.html)
+[HTML - CURRENT PROJECT STATE](https://savevsgames.github.io/Week-4-Challenge/Develop/index.html)
 
 ## Your Task
 
@@ -113,11 +113,8 @@ The Blog Post page must perform the following:
 Follow the link below to open this auto-graded assignment in a new tab. Once you have completed the assignment on the Ed platform, submit it, and you will return to Bootcamp Spot.
 
 > **note** You are allowed to miss up to two Challenge assignments and still earn your certificate. If you complete all Challenge assignments, your lowest two grades will be dropped. If you wish to skip this assignment, click Next, and move on to the next Module.
-
 > **important** No matter how difficult the course becomes, you must always turn in original work. Plagiarism is not tolerated. If your instructional or support staff determine that you have plagiarized work, your Student Success Advisor will determine the appropriate course of action based on university policy. Such actions may include, but are not limited to, a documented plagiarism discussion, an incomplete or failing grade assignment, or ineligibility for graduation.
 
 ---
 
 © 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
-
-# Week-4-Challenge
