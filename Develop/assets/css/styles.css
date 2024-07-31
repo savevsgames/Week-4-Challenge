@@ -90,6 +90,12 @@ main {
   border-top: double 1rem;
 }
 
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*
   Classes
 */
@@ -120,7 +126,7 @@ main {
 /*
   IDs
 */
-#toggle {
+object #toggle {
   font-size: 1.52em;
   margin: 0;
   padding: 0;
