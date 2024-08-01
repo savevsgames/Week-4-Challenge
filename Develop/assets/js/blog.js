@@ -16,15 +16,14 @@ function currentUser() {
   const usernameById = JSON.parse(localStorage.getItem("currentUser"));
   if (usernameById) {
     // console.log(usernameById);
-    const usersPostData = JSON.parse(localStorage.getItem(usernameById));
     // retrieve posts if they are a user and return them
-    // console.log("User Post Data", usersPostData);
-    return usersPostData;
+    return JSON.parse(localStorage.getItem(usernameById)) ?? [];
   } else {
     const element = document.createElement("article");
     element.innerHTML = `<p>No Blog posts yet...</p>`;
     element.classList.add("card");
     mainElement.appendChild(element);
+    return null;
   }
 }
 // TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.

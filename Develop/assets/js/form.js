@@ -16,7 +16,11 @@ function showError(message) {
 function createPost(event) {
   event.preventDefault();
   // check the input elements for valid data
-  if (!usernameInput.value || !titleInput.value || !contentInput.value) {
+  if (
+    usernameInput.value.trim() === "" ||
+    titleInput.value.trim() === "" ||
+    contentInput.value.trim() === ""
+  ) {
     // If the form is submitted with missing data, display an error message to the user.
 
     error.textContent = "Please complete the form.";
@@ -29,7 +33,7 @@ function createPost(event) {
       content: contentInput.value.trim(),
     };
 
-    console.log(post.username);
+    console.log(post.username, post.title, post.content);
     // Grab the form data and store it in local storage,
     // - if null, then set to an empty array
     const returnedUserData = readLocalStorage(post.username) ?? [];
@@ -44,4 +48,5 @@ function createPost(event) {
 }
 
 // TODO: Add an event listener to the form on submit. Call the function to handle the form submission.
-submit.addEventListener("click", createPost);
+// submit.addEventListener("submit", createPost);
+formEl.addEventListener("submit", createPost);

@@ -125,18 +125,10 @@ toggleId.addEventListener("click", toggleTheme);
 // TODO: Create a function called `readLocalStorage` that reads from local storage and returns the data. If no data exists, return an empty array.
 // funcion that takes a username and an input and queries the localStorage
 function readLocalStorage(username) {
-  let userData;
-  const user_id = `user_${username}`;
+  const user_id = `${username}`;
   const userDataString = localStorage.getItem(user_id);
-  // if userData exits/is NOT undefined, then parse it. If it does not exist, return null.
-  console.log("userDataString: ", userDataString);
-  if (userDataString) {
-    userData = JSON.parse(userDataString);
-    console.log("userData: ", userData);
-  } else {
-    userData = [];
-  }
-  return userData;
+  // if userDataString exits/is NOT undefined, then parse it. If it does not exist, return an empty [].
+  return userDataString ? JSON.parse(userDataString) : [];
 }
 
 // TODO: Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing blog data in local storage.
@@ -144,9 +136,9 @@ function readLocalStorage(username) {
 // and then saves them to localStorage under a unique id based on their username
 // prefixed with user_ to indicate the username value.
 function storeLocalStorage(username, data) {
-  const user_id = `user_${username}`;
-  const user_data_String = JSON.stringify(data);
-  localStorage.setItem(user_id, user_data_String);
-  // set the currentUser to that user_id
+  const user_id = `${username}`;
+  // save the data to local storage under that id
+  localStorage.setItem(user_id, JSON.stringify(data));
+  // set the currentUser in local storage to that user_id
   localStorage.setItem("currentUser", JSON.stringify(user_id));
 }
