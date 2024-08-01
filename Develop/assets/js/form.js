@@ -12,9 +12,9 @@ function createPost(event) {
   event.preventDefault();
   // check the input elements for valid data
   if (
-    usernameInput.value !== "" &&
-    titleInput.value !== "" &&
-    contentInput.value !== ""
+    usernameInput.value.trim() !== "" &&
+    titleInput.value.trim() !== "" &&
+    contentInput.value.trim() !== ""
   ) {
     // set the elements
     const post = {

@@ -1,16 +1,17 @@
 // TODO: Create logic to toggle the light/dark mode styles for the page and circle. The mode should be saved to local storage.
 let toggleId = document.querySelector("#toggle");
-const currentThemeElem =
-  document.querySelector(".light") || document.querySelector(".dark");
+const currentThemeElem = document.getElementById("theme-change");
 // get the theme to load
 var currentTheme = currentThemeElem.getAttribute("class");
-var savedTheme = getThemeFromStorage();
 
-console.log("Page load current theme grabbed ->", currentTheme);
+// LOADS PAGE STORED IN LOCAL STORAGE IF AVAILABLE
+// var savedTheme = getThemeFromStorage();
 
-if (localStorage.getItem("theme") !== undefined) {
-  loadSavedTheme();
-}
+// console.log("Page load current theme grabbed ->", currentTheme);
+
+// if (localStorage.getItem("theme") !== undefined) {
+//   loadSavedTheme();
+// }
 
 function getThemeFromStorage() {
   currentTheme = localStorage.getItem("theme");
@@ -112,6 +113,7 @@ function loadSavedTheme() {
 }
 
 let redirectURL = "";
+// ! Use the following function whenever you need to redirect to a different page
 
 const redirectPage = function (url) {
   redirectURL = url;
@@ -148,5 +150,3 @@ function storeLocalStorage(username, data) {
   // set the currentUser to that user_id
   localStorage.setItem("currentUser", JSON.stringify(user_id));
 }
-
-// ! Use the following function whenever you need to redirect to a different page
