@@ -5,17 +5,23 @@ const submit = document.getElementById("submit");
 const usernameInput = document.getElementById("username");
 const titleInput = document.getElementById("title");
 const contentInput = document.getElementById("content");
-const errorMsg = document.getElementById("error");
+const error = document.getElementById("error");
+
+// function to create error prompt
+function showError(message) {
+  alert(message);
+}
 
 // TODO: Create a function that handles the form submission.
 function createPost(event) {
   event.preventDefault();
   // check the input elements for valid data
-  if (
-    usernameInput.value.trim() !== "" &&
-    titleInput.value.trim() !== "" &&
-    contentInput.value.trim() !== ""
-  ) {
+  if (!usernameInput.value || !titleInput.value || !contentInput.value) {
+    // If the form is submitted with missing data, display an error message to the user.
+
+    error.textContent = "Please complete the form.";
+    // showError("Please complete the form.");
+  } else {
     // set the elements
     const post = {
       username: usernameInput.value.trim(),
@@ -34,10 +40,6 @@ function createPost(event) {
     storeLocalStorage(post.username, returnedUserData);
     // then redirect to the blog page using the `redirectPage` function.
     redirectPage("blog.html");
-  } else {
-    // If the form is submitted with missing data, display an error message to the user.
-
-    errorMsg.textContent = "Please complete the form.";
   }
 }
 

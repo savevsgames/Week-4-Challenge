@@ -22,7 +22,7 @@ function currentUser() {
     return usersPostData;
   } else {
     const element = document.createElement("article");
-    element.innerHTML = `<h2>No Blog posts yet...</h2>`;
+    element.innerHTML = `<p>No Blog posts yet...</p>`;
     element.classList.add("card");
     mainElement.appendChild(element);
   }
